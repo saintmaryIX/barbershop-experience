@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import portrait from '../assets/photos/mladenwhite.jpg';
+
+const story = [
+  {
+    place: 'Croacia',
+    period: 'Los comienzos',
+    text: 'A los 16 años descubre su vocación y empieza a formarse en un oficio que acabaría acompañándolo toda la vida.',
+  },
+  {
+    place: 'Londres',
+    period: 'Formación internacional',
+    text: 'Con 23 años se instala en Londres. Allí aprende el idioma, trabaja en firmas como Toni & Guy y perfecciona su técnica en uno de los mercados más exigentes.',
+  },
+  {
+    place: 'Barcelona',
+    period: 'Un nuevo equilibrio',
+    text: 'Tras años de carrera internacional, elige Barcelona para construir una vida más mediterránea sin renunciar a la excelencia profesional.',
+  },
+  {
+    place: 'Alfonso XII · Barcelona',
+    period: 'Su primera barbería',
+    text: 'Durante cuatro años dirige un pequeño local en el barrio. Allí se da a conocer, crea una clientela fiel y sienta las bases de su proyecto.',
+  },
+  {
+    place: 'Hoy',
+    period: 'Experience Barber Shop',
+    text: 'El crecimiento de la clientela pide un espacio mayor. Mladen abre la barbería actual: más amplia, cómoda y preparada para seguir ofreciendo un trato personal.',
+  },
+];
+---
+<BaseLayout
+  title="La historia de Mladen | Experience Barber Shop Barcelona"
+  description="De Croacia a Londres y Barcelona: conoce la trayectoria internacional de Mladen y la historia de Experience Barber Shop."
+>
+  <main>
+    <section class="page-hero about-hero">
+      <div class="site-shell">
+        <p class="eyebrow">Sobre el barbero</p>
+        <h1 class="section-title">La historia detrás de Experience Barber Shop.</h1>
+        <p class="about-lead">Mladen, un profesional con más de 30 años de experiencia internacional.</p>
+      </div>
+    </section>
+
+    <section class="section about-story">
+      <div class="site-shell about-story-grid">
+        <figure class="about-portrait">
+          <Image
+            src={portrait}
+            alt="Retrato de Mladen en su barbería"
+            widths={[480, 720, 960, 1200]}
+            sizes="(max-width: 860px) 100vw, 44vw"
+            format="webp"
+          />
+        </figure>
+
+        <div class="career-timeline" aria-label="Trayectoria profesional de Mladen">
+          {story.map((stage) => (
+            <article class="career-stage">
+              <div class="career-dot" aria-hidden="true"></div>
+              <p class="career-place">{stage.place}</p>
+              <h2>{stage.period}</h2>
+              <p>{stage.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

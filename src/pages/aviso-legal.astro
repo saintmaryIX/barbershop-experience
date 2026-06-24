@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../data/site.js';
+---
+<BaseLayout title="Aviso legal | Experience Barber Shop" description="Información legal de Experience Barber Shop.">
+  <main>
+    <section class="page-hero">
+      <div class="site-shell">
+        <p class="eyebrow">Información legal</p>
+        <h1 class="section-title">Aviso legal.</h1>
+      </div>
+    </section>
+    <section class="section">
+      <div class="site-shell legal-copy">
+        <p><strong>Titular:</strong> pendiente de completar antes de publicar.</p>
+        <p><strong>Nombre comercial:</strong> {business.name}</p>
+        <p><strong>Dirección:</strong> {business.address}</p>
+        <p><strong>Contacto:</strong> {business.phone}</p>
+        <p>Los contenidos de esta web son informativos. Antes del despliegue público deben añadirse el nombre o razón social, NIF/CIF y correo electrónico del titular.</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

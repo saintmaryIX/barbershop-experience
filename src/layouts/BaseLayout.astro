@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import { business, navItems } from '../data/site.js';
+import brandLogo from '../assets/brand/experience-logo.png';
+
+const {
+  title = 'Experience Barber Shop | Barbería en Sant Gervasi Barcelona',
+  description = 'Barbería masculina premium en María Cubí / Sant Gervasi, Barcelona. Corte, barba y trato cercano con oficio clásico.',
+  image = '/og.jpg',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'http://localhost:4321').toString();
+const currentPath = Astro.url.pathname;
+const structuredData = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Barbershop',
+  name: business.name,
+  address: business.address,
+  telephone: business.phone,
+  openingHours: 'Mo-Fr 09:00-19:30',
+  areaServed: ['Sant Gervasi', 'María Cubí', 'Barcelona'],
+  priceRange: '$$',
+  url: canonical,
+  sameAs: [business.googleReviews],
+}).replace(/</g, '\\u003c');
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={structuredData} />
+  </head>
+  <body class="antialiased">
+    <header class="site-header">
+      <div class="site-shell header-inner">
+        <a class="brand-mark" href="/" aria-label="Experience Barber Shop inicio">
+          <img src={brandLogo.src} width={brandLogo.width} height={brandLogo.height} alt="Experience Barber Shop" />
+        </a>
+        <nav class="desktop-nav" aria-label="Navegación principal">
+          {navItems.map((item) => (
+            <a class={currentPath === item.href ? 'active' : ''} href={item.href}>{item.label}</a>
+          ))}
+        </nav>
+        <a class="header-cta" href={business.whatsapp} rel="noopener noreferrer">Reserva tu cita</a>
+        <details class="mobile-nav">
+          <summary class="mobile-menu-button" aria-label="Abrir menú">
+            <span aria-hidden="true"></span>
+          </summary>
+          <nav class="mobile-panel" aria-label="Navegación móvil">
+            {navItems.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+            <a href={business.whatsapp} rel="noopener noreferrer">Reserva tu cita</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <slot />
+    <footer class="footer">
+      <div class="site-shell footer-inner">
+        <div>
+          <strong>{business.name}</strong><br />
+          <span>{business.area}</span>
+        </div>
+        <nav class="footer-links" aria-label="Información legal">
+          <a href="/aviso-legal/">Aviso legal</a>
+          <a href="/privacidad/">Privacidad</a>
+          <a href="/cookies/">Cookies</a>
+          <a href={business.whatsapp} rel="noopener noreferrer">Reservar por WhatsApp</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

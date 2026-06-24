@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../data/site.js';
+import hero from '../assets/photos/fotito.jpg';
+import brandLogo from '../assets/brand/experience-logo.png';
+---
+<BaseLayout>
+  <main>
+    <section class="hero" aria-label="Experience Barber Shop">
+      <div class="hero-slides" aria-hidden="true">
+        <Image
+          class="hero-bg hero-bg-first"
+          src={hero}
+          alt=""
+          loading="eager"
+          widths={[480, 768, 1200, 1800, 2400]}
+          sizes="100vw"
+          format="webp"
+        />
+      </div>
+      <div class="hero-content">
+        <img
+          class="hero-logo-image"
+          src={brandLogo.src}
+          width={brandLogo.width}
+          height={brandLogo.height}
+          alt="Experience Barber Shop"
+        />
+        <div class="hero-actions">
+          <a class="button" href={business.whatsapp}>Reserva tu cita</a>
+          <a class="button ghost" href="/servicios/">Ver servicios</a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#presentacion" aria-label="Conocer la barbería"></a>
+    </section>
+
+    <section id="presentacion" class="section contact-band">
+      <div class="site-shell contact-grid">
+        <div>
+          <p class="eyebrow">Experience Barber Shop</p>
+          <h1 class="section-title">Una barbería de oficio en el corazón de Sant Gervasi.</h1>
+          <p class="section-copy intro-copy">
+            Barbería exclusivamente masculina dirigida por un profesional con más de 30 años de experiencia internacional. Un espacio serio y cercano donde la técnica, el criterio y el trato personal están por encima de las prisas.
+          </p>
+          <div class="contact-list">
+            <div><strong>Zona</strong>{business.area}</div>
+            <div><strong>Dirección</strong>{business.address}</div>
+            <div><strong>Teléfono</strong>{business.phone}</div>
+            <div><strong>Horario</strong>{business.hours}</div>
+          </div>
+          <a class="button" href={business.whatsapp}>Reservar por WhatsApp</a>
+        </div>
+        <iframe
+          class="map-embed"
+          title="Mapa de Experience Barber Shop en Sant Gervasi"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src={`https://www.google.com/maps?q=${encodeURIComponent(business.mapQuery)}&output=embed`}
+        ></iframe>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

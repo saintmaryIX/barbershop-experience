@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import p1 from '../assets/gallery/1-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p2 from '../assets/gallery/2-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p5 from '../assets/gallery/5-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p8 from '../assets/gallery/8-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p15 from '../assets/gallery/15-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p19 from '../assets/gallery/19-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p23 from '../assets/gallery/23-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p25 from '../assets/gallery/25-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p29 from '../assets/gallery/29-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p37 from '../assets/gallery/37-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p40 from '../assets/gallery/40-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p45 from '../assets/gallery/45-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p53 from '../assets/gallery/53-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p57 from '../assets/gallery/57-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p61 from '../assets/gallery/61-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p70 from '../assets/gallery/70-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p73 from '../assets/gallery/73-Mladen_Barbershop_by_WitekPhotography.jpg';
+import p84 from '../assets/gallery/84-Mladen_Barbershop_by_WitekPhotography.jpg';
+
+const photos = [
+  [p1, 'Experience Barber Shop en Sant Gervasi'],
+  [p23, 'Trabajo de barbería masculina'],
+  [p15, 'Interior de Experience Barber Shop'],
+  [p25, 'Detalle del oficio de barbero'],
+  [p2, 'Ambiente de la barbería'],
+  [p19, 'Servicio profesional de barbería'],
+  [p37, 'Retrato durante un servicio'],
+  [p5, 'Espacio de Experience Barber Shop'],
+  [p29, 'Detalle de la identidad de la barbería'],
+  [p45, 'Herramientas clásicas de barbería'],
+  [p40, 'Mladen trabajando en la barbería'],
+  [p70, 'Precisión y detalle en el servicio'],
+  [p53, 'Proceso de corte masculino'],
+  [p57, 'Atención personalizada al cliente'],
+  [p73, 'Oficio y ambiente en Experience Barber Shop'],
+  [p8, 'Detalle del local'],
+  [p84, 'Servicio de barba en Experience Barber Shop'],
+  [p61, 'Mladen realizando un corte en Experience Barber Shop'],
+];
+---
+<BaseLayout
+  title="Galería | Experience Barber Shop Barcelona"
+  description="Galería visual del trabajo, el local y el ambiente de Experience Barber Shop en María Cubí, Sant Gervasi."
+>
+  <main>
+    <section class="page-hero">
+      <div class="site-shell">
+        <p class="eyebrow">Galería</p>
+        <h1 class="section-title">Una fotografía vale más que mil palabras.</h1>
+      </div>
+    </section>
+    <section class="gallery-section">
+      <div class="site-shell gallery-grid gallery-masonry">
+        {photos.map(([src, alt]) => (
+          <figure class="gallery-item">
+            <Image
+              src={src}
+              alt={alt}
+              widths={[360, 560, 900, 1300]}
+              sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw"
+              format="webp"
+            />
+          </figure>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

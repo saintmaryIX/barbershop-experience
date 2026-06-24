@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../data/site.js';
+---
+<BaseLayout
+  title="Contacto y ubicación | Experience Barber Shop Barcelona"
+  description="Encuentra Experience Barber Shop en María Cubí, Sant Gervasi. Consulta horario, teléfono y reserva directamente por WhatsApp."
+>
+  <main>
+    <section class="page-hero">
+      <div class="site-shell">
+        <p class="eyebrow">Contacto y ubicación</p>
+        <h1 class="section-title">Tu barbero en María Cubí, Sant Gervasi.</h1>
+        <p class="section-copy">Reserva de forma directa y sencilla por WhatsApp.</p>
+      </div>
+    </section>
+
+    <section class="section contact-band">
+      <div class="site-shell contact-grid">
+        <div>
+          <div class="contact-list">
+            <div><strong>Zona</strong>{business.area}</div>
+            <div><strong>Dirección</strong>{business.address}</div>
+            <div><strong>Teléfono</strong>{business.phone}</div>
+            <div><strong>Horario</strong>{business.hours}</div>
+          </div>
+          <a class="button" href={business.whatsapp}>Escribir por WhatsApp</a>
+        </div>
+        <iframe class="map-embed" title="Mapa de Experience Barber Shop en Sant Gervasi" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src={`https://www.google.com/maps?q=${encodeURIComponent(business.mapQuery)}&output=embed`}></iframe>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

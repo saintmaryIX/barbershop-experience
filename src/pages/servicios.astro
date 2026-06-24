@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business, services } from '../data/site.js';
+---
+<BaseLayout
+  title="Servicios de barbería en Sant Gervasi | Experience Barber Shop"
+  description="Corte de pelo, arreglo de barba y afeitado clásico en María Cubí, Sant Gervasi. Consulta nuestros servicios y precios."
+>
+  <main>
+    <section class="page-hero">
+      <div class="site-shell">
+        <p class="eyebrow">Servicios</p>
+        <h1 class="section-title">Corte, barba y cuidado masculino con oficio.</h1>
+        <p class="section-copy">Cada servicio se trabaja con tiempo, criterio y atención al detalle.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="site-shell">
+        <div class="services">
+          {services.map((service) => (
+            <article class="service-card">
+              <h2>{service.name}</h2>
+              <p>{service.description}</p>
+              <div class="service-meta">
+                <span>{service.price}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="page-action">
+          <a class="button" href={business.whatsapp}>Reservar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

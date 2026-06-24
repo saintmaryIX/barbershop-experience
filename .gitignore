@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Astro build and cache
+dist/
+.astro/
+
+# Hosting and tooling caches
+.vercel/
+.netlify/
+.cache/
+coverage/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs and local artifacts
+*.log
+screenshots/
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo

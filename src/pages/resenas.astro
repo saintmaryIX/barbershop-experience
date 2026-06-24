@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business, reviews } from '../data/site.js';
+---
+<BaseLayout title="Reseñas | Experience Barber Shop Sant Gervasi" description="Opiniones de clientes de Experience Barber Shop, barbería masculina en Sant Gervasi Barcelona.">
+  <main>
+    <section class="page-hero">
+      <div class="site-shell">
+        <p class="eyebrow">Reseñas verificadas</p>
+        <h1 class="section-title">La reputación local se nota en quienes vuelven.</h1>
+        <p class="section-copy">Una selección de opiniones reales publicadas por clientes en Google.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="site-shell">
+        <div class="reviews">
+          {reviews.map((review) => (
+            <article class="review-card">
+              <div class="stars" aria-label="Cinco estrellas">★★★★★</div>
+              <p>"{review.text}"</p>
+              <h2>{review.name}</h2>
+              <span class="review-date">{review.date} · Google</span>
+            </article>
+          ))}
+        </div>
+        <div class="page-action">
+          <a class="button ghost" href={business.googleReviews} target="_blank" rel="noopener noreferrer">Ver todas en Google</a>
+          <a class="button" href={business.whatsapp}>Reservar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
