@@ -32,7 +32,7 @@ export const services = [
   {
     name: "Afeitado",
     description: "Una experiencia de afeitado clásico con preafeitado, toalla caliente, espuma a brocha, navaja, toalla fría, postafeitado y masaje capilar, acompañada de música jazz.",
-    price: "23 €",
+    price: "26 €",
   },
 ];
 
